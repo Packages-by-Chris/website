@@ -9,6 +9,7 @@ const sections = [
   { id: "getting-started", label: "Getting started" },
   { id: "installation", label: "Installation" },
   { id: "usage", label: "Usage" },
+  { id: "examples", label: "Examples" },
   { id: "datepicker-props", label: "DatePickerBS props" },
   { id: "calendar-props", label: "CalendarBS props" },
   { id: "format-patterns", label: "Format patterns" },
@@ -265,6 +266,100 @@ function App() {
   disabled
   className="w-[280px]"
 />`} />
+              </DocSubSection>
+            </DocSection>
+
+            {/* ─── Examples ─── */}
+            <DocSection id="examples" title="Examples">
+              <DocSubSection title="Form integration">
+                <p className="text-sm leading-relaxed text-muted-foreground mb-3">
+                  Use <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">DatePickerBS</code> inside a form with a submit handler:
+                </p>
+                <CodeBlock code={`import { useState } from "react"
+import { DatePickerBS, type DateBS, formatBsDate, getTodayBs } from "date-picker-bs"
+
+function BookingForm() {
+  const [date, setDate] = useState<DateBS | undefined>(getTodayBs())
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!date) return
+    const formatted = formatBsDate(date, "en", { pattern: "YYYY-MM-DD" })
+    console.log("Booking submitted for:", formatted)
+    // → "Booking submitted for: 2081-05-15"
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Select a date
+        </label>
+        <DatePickerBS
+          value={date}
+          onChange={setDate}
+          className="w-[280px]"
+          placeholder="Pick a date"
+        />
+      </div>
+      <button
+        type="submit"
+        className="rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
+      >
+        Submit booking
+      </button>
+    </form>
+  )
+}`} />
+              </DocSubSection>
+
+              <DocSubSection title="Date range picker">
+                <p className="text-sm leading-relaxed text-muted-foreground mb-3">
+                  Combine two <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">DatePickerBS</code> instances for a start and end date range:
+                </p>
+                <CodeBlock code={`import { useState } from "react"
+import { DatePickerBS, type DateBS, isAfterBsDate, getTodayBs } from "date-picker-bs"
+
+function DateRangePicker() {
+  const [startDate, setStartDate] = useState<DateBS | undefined>(getTodayBs())
+  const [endDate, setEndDate] = useState<DateBS | undefined>()
+
+  const handleStartChange = (date: DateBS) => {
+    setStartDate(date)
+    // Clear end date if it's before the new start date
+    if (endDate && !isAfterBsDate(endDate, date)) {
+      setEndDate(undefined)
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row">
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Start date
+        </label>
+        <DatePickerBS
+          value={startDate}
+          onChange={handleStartChange}
+          className="w-[240px]"
+          placeholder="Start date"
+        />
+      </div>
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          End date
+        </label>
+        <DatePickerBS
+          value={endDate}
+          onChange={setEndDate}
+          minDate={startDate}
+          className="w-[240px]"
+          placeholder="End date"
+        />
+      </div>
+    </div>
+  )
+}`} />
               </DocSubSection>
             </DocSection>
 
