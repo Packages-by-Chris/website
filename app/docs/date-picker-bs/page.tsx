@@ -1,7 +1,10 @@
 "use client"
 
+import { useState } from "react"
+import { DatePickerBS, type DateBS, formatBsDate, getTodayBs, isAfterBsDate } from "date-picker-bs"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
+import { ExamplePreview } from "../../example-preview"
 
 const VERSION = "0.1.0"
 
@@ -62,6 +65,80 @@ function DocSubSection({ title, children }: { title: string; children: React.Rea
     <div className="mb-8">
       <h3 className="text-base font-semibold text-foreground mb-3">{title}</h3>
       {children}
+    </div>
+  )
+}
+
+function BookingFormExample() {
+  const [date, setDate] = useState<DateBS | undefined>(getTodayBs())
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!date) return
+    const formatted = formatBsDate(date, "en", { pattern: "YYYY-MM-DD" })
+    alert("Booking submitted for: " + formatted)
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Select a date
+        </label>
+        <DatePickerBS
+          value={date}
+          onChange={setDate}
+          className="w-[280px]"
+          placeholder="Pick a date"
+        />
+      </div>
+      <button
+        type="submit"
+        className="rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90 transition-opacity"
+      >
+        Submit booking
+      </button>
+    </form>
+  )
+}
+
+function DateRangeExample() {
+  const [startDate, setStartDate] = useState<DateBS | undefined>(getTodayBs())
+  const [endDate, setEndDate] = useState<DateBS | undefined>()
+
+  const handleStartChange = (date: DateBS | undefined) => {
+    if (!date) return
+    setStartDate(date)
+    if (endDate && !isAfterBsDate(endDate, date)) {
+      setEndDate(undefined)
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row">
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Start date
+        </label>
+        <DatePickerBS
+          value={startDate}
+          onChange={handleStartChange}
+          className="w-[240px]"
+          placeholder="Start date"
+        />
+      </div>
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          End date
+        </label>
+        <DatePickerBS
+          value={endDate}
+          onChange={setEndDate}
+          minDate={startDate}
+          className="w-[240px]"
+          placeholder="End date"
+        />
+      </div>
     </div>
   )
 }
@@ -275,7 +352,7 @@ function App() {
                 <p className="text-sm leading-relaxed text-muted-foreground mb-3">
                   Use <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">DatePickerBS</code> inside a form with a submit handler:
                 </p>
-                <CodeBlock code={`import { useState } from "react"
+                <ExamplePreview code={`import { useState } from "react"
 import { DatePickerBS, type DateBS, formatBsDate, getTodayBs } from "date-picker-bs"
 
 function BookingForm() {
@@ -285,8 +362,7 @@ function BookingForm() {
     e.preventDefault()
     if (!date) return
     const formatted = formatBsDate(date, "en", { pattern: "YYYY-MM-DD" })
-    console.log("Booking submitted for:", formatted)
-    // → "Booking submitted for: 2081-05-15"
+    alert("Booking submitted for: " + formatted)
   }
 
   return (
@@ -310,23 +386,25 @@ function BookingForm() {
       </button>
     </form>
   )
-}`} />
+}`}>
+                  <BookingFormExample />
+                </ExamplePreview>
               </DocSubSection>
 
               <DocSubSection title="Date range picker">
                 <p className="text-sm leading-relaxed text-muted-foreground mb-3">
                   Combine two <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">DatePickerBS</code> instances for a start and end date range:
                 </p>
-                <CodeBlock code={`import { useState } from "react"
+                <ExamplePreview code={`import { useState } from "react"
 import { DatePickerBS, type DateBS, isAfterBsDate, getTodayBs } from "date-picker-bs"
 
 function DateRangePicker() {
   const [startDate, setStartDate] = useState<DateBS | undefined>(getTodayBs())
   const [endDate, setEndDate] = useState<DateBS | undefined>()
 
-  const handleStartChange = (date: DateBS) => {
+  const handleStartChange = (date: DateBS | undefined) => {
+    if (!date) return
     setStartDate(date)
-    // Clear end date if it's before the new start date
     if (endDate && !isAfterBsDate(endDate, date)) {
       setEndDate(undefined)
     }
@@ -359,7 +437,9 @@ function DateRangePicker() {
       </div>
     </div>
   )
-}`} />
+}`}>
+                  <DateRangeExample />
+                </ExamplePreview>
               </DocSubSection>
             </DocSection>
 
