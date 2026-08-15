@@ -43,10 +43,10 @@ export default function DocsPage() {
     <div className="min-h-screen bg-background">
       <Nav />
 
-      <div className="mx-auto max-w-4xl px-6 py-16 sm:px-8 sm:py-20">
+      <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Documentation</h1>
-          <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Documentation</h1>
+          <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
             Comprehensive guides and API references for every Christhapa package.
           </p>
         </div>
@@ -56,30 +56,34 @@ export default function DocsPage() {
             <a
               key={pkg.name}
               href={pkg.href}
-              className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
             >
               <div className="flex items-center justify-between gap-2">
-                <h2 className="text-lg font-bold text-foreground group-hover:text-foreground">{pkg.name}</h2>
-                <span className="shrink-0 rounded-full border border-border bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{pkg.stack}</span>
+                <h2 className="text-base font-semibold text-foreground">{pkg.name}</h2>
+                <span className="shrink-0 rounded-full border border-border bg-muted px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{pkg.stack}</span>
               </div>
               <p className="mt-1 text-sm font-medium text-muted-foreground">{pkg.tagline}</p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {pkg.description}
               </p>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
+              <div className="mt-4 flex flex-1 flex-wrap content-start gap-1.5">
                 {pkg.sections.map((s) => (
-                  <li key={s} className="rounded-md bg-secondary px-2 py-0.5 text-[11px] text-muted-foreground">
+                  <span key={s} className="rounded-md bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
                     {s}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                Read the docs
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
             </a>
           ))}
         </div>
 
-        <div className="mt-16 rounded-xl border border-border bg-card p-6">
-          <h2 className="text-base font-bold text-foreground mb-2">Quick install</h2>
-          <p className="text-sm text-muted-foreground mb-4">
+        <div className="mt-14 rounded-xl border border-border bg-card p-6">
+          <h2 className="mb-2 text-base font-semibold text-foreground">Quick install</h2>
+          <p className="mb-4 text-sm text-muted-foreground">
             Install everything you need for Bikram Sambat development:
           </p>
           <CodeBlock lang="bash" code="# Core utilities (framework-agnostic)

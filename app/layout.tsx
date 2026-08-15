@@ -122,8 +122,8 @@ export default function RootLayout({
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
-                    document.documentElement.classList.add('light');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
                   }
                 } catch(e) {}
               })();

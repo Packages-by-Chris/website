@@ -76,71 +76,71 @@ export default function ExtensionsCorePage() {
     <div className="min-h-screen bg-background">
       <Nav />
 
-      <div className="mx-auto max-w-4xl px-6 py-12 sm:px-8 sm:py-16">
-        <div className="mb-12 pb-8 border-b border-border">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-            <a href="/packages" className="hover:text-foreground transition-colors">Packages</a>
-            <span>/</span>
+      <div className="mx-auto max-w-3xl px-6 py-14 sm:px-8">
+        <div className="mb-12">
+          <nav className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground">
+            <a href="/packages" className="transition-colors hover:text-foreground">Packages</a>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
             <span className="text-foreground font-medium">extensions_core</span>
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          </nav>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             extensions_core
           </h1>
-          <p className="mt-3 text-base text-muted-foreground max-w-2xl">
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
             A comprehensive, dependency-light collection of Dart &amp; Flutter extensions.
             Stop hunting for separate extension packages — strings, numbers, dates, collections,
             colors, widgets, navigation, and more in one place.
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">v0.0.4</span>
-            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">MIT</span>
-            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">Dart ^3.6</span>
-            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">Flutter &gt;=3.27</span>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 font-mono text-[11px] text-muted-foreground">v0.0.4</span>
+            <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 font-mono text-[11px] text-muted-foreground">MIT</span>
+            <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 font-mono text-[11px] text-muted-foreground">Dart ^3.6</span>
+            <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 font-mono text-[11px] text-muted-foreground">Flutter &gt;=3.27</span>
           </div>
-          <div className="mt-4">
+          <div className="mt-5">
             <CodeBlock lang="bash" code="flutter pub add extensions_core" />
           </div>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-14">
           {features.map((f) => (
             <section key={f.title}>
-              <h2 className="text-xl font-bold tracking-tight text-foreground mb-2">{f.title}</h2>
-              <p className="text-sm leading-relaxed text-muted-foreground mb-4">{f.description}</p>
+              <h2 className="text-lg font-semibold tracking-tight text-foreground mb-2">{f.title}</h2>
+              <p className="doc-body mb-4">{f.description}</p>
               <CodeBlock lang="dart" code={f.code} />
             </section>
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border">
-          <h2 className="text-xl font-bold tracking-tight text-foreground mb-4">Related packages</h2>
+        <div className="mt-16 border-t border-border pt-8">
+          <h2 className="text-lg font-semibold tracking-tight text-foreground mb-4">Related packages</h2>
           <div className="grid gap-4 sm:grid-cols-3">
-            <a href="/packages/kundali-chart" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+            <a href="/packages/kundali-chart" className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40">
               <p className="text-sm font-semibold text-foreground">kundali_chart</p>
               <p className="mt-1 text-xs text-muted-foreground">Another Flutter package — Vedic astrology birth charts.</p>
             </a>
-            <a href="/packages/nepali-utils" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+            <a href="/packages/nepali-utils" className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40">
               <p className="text-sm font-semibold text-foreground">@nepali-utils/core</p>
               <p className="mt-1 text-xs text-muted-foreground">Bikram Sambat utilities for the JS/TS ecosystem.</p>
             </a>
-            <a href="/packages/date-picker-bs" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+            <a href="/packages/date-picker-bs" className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40">
               <p className="text-sm font-semibold text-foreground">date-picker-bs</p>
               <p className="mt-1 text-xs text-muted-foreground">React date picker for the Nepali calendar.</p>
             </a>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex items-center justify-between">
+        <div className="mt-16 flex items-center justify-between border-t border-border pt-8">
           <a
             href="/packages"
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-accent transition-colors"
+            className="btn-outline px-4 py-2 text-xs"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             All packages
           </a>
           <a
             href="/docs/extensions-core"
-            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2 text-xs font-medium text-background hover:opacity-90 transition-colors"
+            className="btn-primary px-4 py-2 text-xs"
           >
             View docs
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

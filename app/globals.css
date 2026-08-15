@@ -4,12 +4,39 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96.5%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 96.5%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 0% 4%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 0 0% 4%;
+    --radius: 0.625rem;
+    --code-bg: 0 0% 97.5%;
+    --code-header: 0 0% 94%;
+    --code-line: 0 0% 84%;
+  }
+
+  .dark {
     color-scheme: dark;
     --background: 0 0% 4%;
     --foreground: 0 0% 96%;
-    --card: 0 0% 7%;
+    --card: 0 0% 4%;
     --card-foreground: 0 0% 96%;
-    --popover: 0 0% 9%;
+    --popover: 0 0% 4%;
     --popover-foreground: 0 0% 96%;
     --primary: 0 0% 96%;
     --primary-foreground: 0 0% 4%;
@@ -21,39 +48,12 @@
     --accent-foreground: 0 0% 96%;
     --destructive: 0 0% 96%;
     --destructive-foreground: 0 0% 4%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
     --ring: 0 0% 80%;
-    --radius: 0.5rem;
     --code-bg: 0 0% 5%;
     --code-header: 0 0% 8%;
     --code-line: 0 0% 15%;
-  }
-
-  .light {
-    color-scheme: light;
-    --background: 0 0% 99%;
-    --foreground: 0 0% 6%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
-    --primary: 0 0% 6%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 6%;
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 42%;
-    --accent: 0 0% 95%;
-    --accent-foreground: 0 0% 6%;
-    --destructive: 0 0% 6%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 6%;
-    --code-bg: 0 0% 97%;
-    --code-header: 0 0% 93%;
-    --code-line: 0 0% 85%;
   }
 }
 
@@ -63,15 +63,44 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
+    scroll-padding-top: 4.5rem;
   }
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
   }
   ::selection {
-    background-color: hsl(var(--foreground) / 0.12);
+    background-color: hsl(var(--primary) / 0.15);
     color: hsl(var(--foreground));
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Primary button */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card text-sm font-medium text-foreground transition-colors hover:bg-accent;
+  }
+
+  /* Docs typography helpers */
+  .doc-lead {
+    @apply text-[15px] leading-7 text-muted-foreground;
+  }
+  .doc-body {
+    @apply text-sm leading-7 text-muted-foreground;
+  }
+  .link {
+    @apply font-medium text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary;
   }
 }
 
@@ -84,12 +113,12 @@
   }
   .bg-grid {
     background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
-    background-size: 3rem 3rem;
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 2.5rem 2.5rem;
   }
   .bg-gradient-radial {
-    background: radial-gradient(ellipse at 50% 0%, hsl(var(--foreground) / 0.04) 0%, transparent 60%);
+    background: radial-gradient(ellipse 60% 45% at 50% 0%, hsl(var(--foreground) / 0.06) 0%, transparent 60%);
   }
   .mask-fade-bottom {
     mask-image: linear-gradient(to bottom, black 0%, transparent 100%);

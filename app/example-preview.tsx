@@ -24,15 +24,15 @@ export function ExamplePreview({
   }
 
   return (
-    <div className="my-4 rounded-xl border border-border overflow-hidden">
-      <div className="flex items-center gap-0 border-b border-border bg-muted/20 px-4">
+    <div className="my-4 overflow-hidden rounded-lg border border-border">
+      <div className="flex items-center gap-0 border-b border-border bg-muted/40 px-4">
         <button
           type="button"
           onClick={() => setView("preview")}
           className={cn(
             "relative px-4 py-2.5 text-xs font-medium transition-colors",
             view === "preview"
-              ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-foreground"
+              ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"
               : "text-muted-foreground hover:text-foreground",
           )}
         >
@@ -44,7 +44,7 @@ export function ExamplePreview({
           className={cn(
             "relative px-4 py-2.5 text-xs font-medium transition-colors",
             view === "code"
-              ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-foreground"
+              ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"
               : "text-muted-foreground hover:text-foreground",
           )}
         >
@@ -57,8 +57,8 @@ export function ExamplePreview({
             className={cn(
               "ml-auto font-mono text-[10px] uppercase tracking-widest transition-all",
               copied
-                ? "text-[#27c93f]"
-                : "text-muted-foreground/30 hover:text-muted-foreground/70",
+                ? "text-foreground"
+                : "text-muted-foreground/60 hover:text-foreground",
             )}
           >
             {copied ? "Copied" : "Copy"}
@@ -66,19 +66,16 @@ export function ExamplePreview({
         )}
       </div>
       {view === "preview" ? (
-        <div className="p-6 bg-card">{children}</div>
+        <div className="bg-card p-6">{children}</div>
       ) : (
-        <div
-          className="overflow-x-auto"
-          style={{ backgroundColor: "hsl(var(--code-bg))" }}
-        >
+        <div className="overflow-x-auto bg-code-bg">
           <pre className="flex p-0 text-sm leading-6">
             <code className="flex w-full">
               <span
                 className="shrink-0 select-none border-r py-4 text-right font-mono text-xs leading-6"
                 style={{
-                  borderColor: "hsl(var(--code-line))",
-                  color: "hsl(var(--code-line))",
+                  borderColor: "hsl(var(--border))",
+                  color: "hsl(var(--border))",
                   minWidth: `${gutterWidth + 2}ch`,
                   paddingRight: "1ch",
                   paddingLeft: "1ch",
@@ -88,7 +85,7 @@ export function ExamplePreview({
                   <div key={i}>{i + 1}</div>
                 ))}
               </span>
-              <span className="overflow-x-auto py-4 pl-4 pr-6 font-mono text-sm leading-6 text-foreground/85">
+              <span className="overflow-x-auto py-4 pl-4 pr-6 font-mono text-[13px] leading-6 text-foreground/90">
                 {lines.map((line, i) => (
                   <div key={i} className="whitespace-pre">{line || " "}</div>
                 ))}
