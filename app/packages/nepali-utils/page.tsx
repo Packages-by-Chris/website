@@ -129,6 +129,24 @@ export default function NepaliUtilsPage() {
           ))}
         </div>
 
+        <div className="mt-16 pt-8 border-t border-border">
+          <h2 className="text-xl font-bold tracking-tight text-foreground mb-4">Related packages</h2>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a href="/packages/date-picker-bs" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+              <p className="text-sm font-semibold text-foreground">date-picker-bs</p>
+              <p className="mt-1 text-xs text-muted-foreground">React date picker &amp; calendar built on this library.</p>
+            </a>
+            <a href="/packages/extensions-core" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+              <p className="text-sm font-semibold text-foreground">extensions_core</p>
+              <p className="mt-1 text-xs text-muted-foreground">Dart &amp; Flutter extensions for strings, dates, collections.</p>
+            </a>
+            <a href="/packages/kundali-chart" className="rounded-xl border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-sm">
+              <p className="text-sm font-semibold text-foreground">kundali_chart</p>
+              <p className="mt-1 text-xs text-muted-foreground">Vedic astrology charts for Flutter.</p>
+            </a>
+          </div>
+        </div>
+
         <div className="mt-16 pt-8 border-t border-border flex items-center justify-between">
           <a
             href="/packages"

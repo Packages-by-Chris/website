@@ -3,11 +3,11 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Comprehensive guides and API references for every NepaliKit package — date-picker-bs, @nepali-utils/core, and more.",
+    "Comprehensive guides and API references for every Christhapa package — date-picker-bs, @nepali-utils/core, extensions_core, and kundali_chart.",
   openGraph: {
-    title: "Documentation | NepaliKit",
+    title: "Documentation | Christhapa Packages",
     description:
-      "Comprehensive guides and API references for every NepaliKit package.",
+      "Comprehensive guides and API references for every Christhapa package.",
   },
 }
 

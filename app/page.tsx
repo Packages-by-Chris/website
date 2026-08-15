@@ -8,6 +8,7 @@ const VERSION = "0.1.0"
 const packages = [
   {
     name: "@nepali-utils/core",
+    stack: "TypeScript",
     description: "Framework-agnostic TypeScript library for Bikram Sambat dates, number conversion, calendar utilities, location data, and phone validation.",
     features: [
       "BS ↔ AD date conversion",
@@ -23,6 +24,7 @@ const packages = [
   },
   {
     name: "date-picker-bs",
+    stack: "React",
     description: "A React date picker and calendar for the Bikram Sambat (Nepali) calendar — built with Radix UI Popover, Tailwind CSS, and shadcn/ui.",
     features: [
       "DatePickerBS — popover-based date picker",
@@ -35,6 +37,38 @@ const packages = [
     href: "/packages/date-picker-bs",
     docs: "/docs/date-picker-bs",
     install: "npm install date-picker-bs",
+  },
+  {
+    name: "extensions_core",
+    stack: "Flutter",
+    description: "A comprehensive, dependency-light collection of Dart & Flutter extensions — strings, numbers, dates, collections, colors, widgets, navigation, and more.",
+    features: [
+      "String, number & DateTime helpers",
+      "Iterable, List & Map utilities",
+      "Color & widget extensions",
+      "Navigation, alerts & snackbars",
+      "Composable form validators",
+      "Flutter-ready & dependency-light",
+    ],
+    href: "/packages/extensions-core",
+    docs: "/docs/extensions-core",
+    install: "flutter pub add extensions_core",
+  },
+  {
+    name: "kundali_chart",
+    stack: "Flutter",
+    description: "A comprehensive Flutter package for creating beautiful and highly customizable Vedic astrology charts (Kundali/Birth Charts).",
+    features: [
+      "KundaliChart widget with 12-house layout",
+      "Sanskrit house labels & custom labels",
+      "Accurate planet placement rendering",
+      "Built-in dark mode support",
+      "Custom painters for smooth rendering",
+      "Fully responsive & customizable styling",
+    ],
+    href: "/packages/kundali-chart",
+    docs: "/docs/kundali-chart",
+    install: "flutter pub add kundali_chart",
   },
 ]
 
@@ -53,13 +87,15 @@ export default function Home() {
             <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">MIT</span>
             <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">TypeScript</span>
             <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">React</span>
+            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">Dart</span>
+            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 font-mono text-[11px] text-muted-foreground">Flutter</span>
           </div>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            NepaliKit
+            Christhapa Packages
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-base leading-relaxed text-muted-foreground sm:text-lg text-balance">
-            A collection of TypeScript tools for the Bikram Sambat (Nepali) ecosystem —
-            dates, calendars, location data, validation, and React components.
+            Open source libraries by Chris Thapa — Bikram Sambat (Nepali) date tools,
+            a React date picker, Dart &amp; Flutter extensions, and Vedic astrology charts.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
@@ -70,7 +106,14 @@ export default function Home() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a
-              href="https://github.com"
+              href="/docs"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-accent"
+            >
+              Read the Docs
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </a>
+            <a
+              href="https://github.com/LeanQChris"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-accent"
@@ -82,13 +125,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── Ecosystem overview ─── */}
+      <section className="mx-auto max-w-6xl px-6 py-12 sm:px-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Ecosystem</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Two stacks, one place.</span>{" "}
+              JS/TS libraries on npm and Dart/Flutter packages on pub.dev — each independently
+              installable and fully typed.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Nepali Calendar</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Bikram Sambat 2000–2100.</span>{" "}
+              Conversion, formatting, numerals, calendar grids, and a React date picker —
+              all built on <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-[11px]">@nepali-utils/core</code>.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Dart &amp; Flutter</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Daily-driver extensions.</span>{" "}
+              Strings, numbers, dates, collections, colors, widgets, navigation, and validators
+              in a single dependency-light package.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Astrology</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Vedic birth charts.</span>{" "}
+              Customizable Kundali charts for Flutter with planet placement, Sanskrit house
+              labels, and dark mode.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Packages ─── */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Featured packages</h2>
+          <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
+            Every package is published, versioned, and documented — designed to work standalone or together.
+          </p>
+        </div>
         <div className="grid gap-8 md:grid-cols-2">
           {packages.map((pkg) => (
             <div key={pkg.name} className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm">
-              <div className="flex items-start justify-between mb-3">
+              <div className="flex items-start justify-between gap-2 mb-3">
                 <h2 className="text-lg font-bold text-foreground">{pkg.name}</h2>
+                <span className="shrink-0 rounded-full border border-border bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{pkg.stack}</span>
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                 {pkg.description}
@@ -134,13 +222,13 @@ export default function Home() {
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
                 <line x1="3" y1="10" x2="21" y2="10"/>
               </svg>
-              <span className="text-sm font-semibold text-foreground">NepaliKit</span>
+              <span className="text-sm font-semibold text-foreground">Christhapa Packages</span>
             </div>
             <p className="text-xs text-muted-foreground">
-              Bikram Sambat tools for the Nepali ecosystem — TypeScript · React · Tailwind CSS
+              Open source libraries by Chris Thapa — TypeScript · React · Dart · Flutter
             </p>
             <p className="text-[11px] text-muted-foreground/60">
-              MIT License · Built for the Nepali community
+              MIT License · packages.christhapa.com.np
             </p>
           </div>
         </div>

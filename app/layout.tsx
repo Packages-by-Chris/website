@@ -2,17 +2,22 @@ import type { Metadata } from "next"
 import { ThemeProvider } from "./theme-provider"
 import "./globals.css"
 
-const siteUrl = "https://nepalikit.com"
+const siteUrl = "https://packages.christhapa.com.np"
+const siteName = "Christhapa Packages"
+const siteTitle = "Christhapa Packages — Open Source Libraries for JS/TS & Flutter"
+const siteDescription =
+  "A curated collection of open source packages by Chris Thapa — Bikram Sambat (Nepali) date utilities, a React date picker, Dart & Flutter extensions, and Vedic astrology charts."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NepaliKit — Bikram Sambat Tools for React & TypeScript",
-    template: "%s | NepaliKit",
+    default: siteTitle,
+    template: `%s | ${siteName}`,
   },
-  description:
-    "A collection of Bikram Sambat (Nepali) tools including a date picker, calendar utilities, number conversion, location data, and validation — built for React and TypeScript.",
+  description: siteDescription,
   keywords: [
+    "Christhapa Packages",
+    "Chris Thapa",
     "Bikram Sambat",
     "Nepali date picker",
     "Nepali calendar",
@@ -22,33 +27,38 @@ export const metadata: Metadata = {
     "Nepali utilities",
     "React date picker",
     "TypeScript",
-    "NepaliKit",
+    "Flutter",
+    "Dart",
+    "Flutter extensions",
+    "Vedic astrology",
+    "Kundali chart",
+    "open source",
+    "npm",
+    "pub.dev",
   ],
-  authors: [{ name: "NepaliKit" }],
-  creator: "NepaliKit",
-  publisher: "NepaliKit",
+  authors: [{ name: "Chris Thapa" }],
+  creator: "Chris Thapa",
+  publisher: siteName,
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "NepaliKit",
-    title: "NepaliKit — Bikram Sambat Tools for React & TypeScript",
-    description:
-      "A collection of Bikram Sambat (Nepali) tools including a date picker, calendar utilities, number conversion, location data, and validation — built for React and TypeScript.",
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "NepaliKit — Bikram Sambat Tools for React & TypeScript",
+        alt: siteTitle,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NepaliKit — Bikram Sambat Tools for React & TypeScript",
-    description:
-      "A collection of Bikram Sambat (Nepali) tools including a date picker, calendar utilities, number conversion, location data, and validation.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/og.png"],
   },
   robots: {
@@ -81,10 +91,14 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "NepaliKit",
+    name: siteName,
     url: siteUrl,
-    description:
-      "A collection of Bikram Sambat (Nepali) tools including a date picker, calendar utilities, number conversion, location data, and validation.",
+    description: siteDescription,
+    author: {
+      "@type": "Person",
+      name: "Chris Thapa",
+      url: "https://christhapa.com.np",
+    },
     potentialAction: {
       "@type": "SearchAction",
       target: {
