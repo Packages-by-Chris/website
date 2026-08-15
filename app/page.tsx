@@ -2,6 +2,7 @@
 
 import { Nav } from "./nav"
 import { CodeBlock } from "./code-block"
+import { siteUrl, siteName } from "@/lib/seo"
 
 const packages = [
   {
@@ -47,8 +48,52 @@ flutter pub add extensions_core
 flutter pub add kundali_chart`
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Packages by Chris Thapa — Open Source Libraries for JS/TS & Flutter",
+    url: `${siteUrl}/`,
+    description:
+      "Open source packages by Chris Thapa — Bikram Sambat date utilities, a React date picker, Dart & Flutter extensions, and Vedic astrology charts.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteName,
+      url: siteUrl,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "@nepali-utils/core",
+          url: `${siteUrl}/packages/nepali-utils`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "date-picker-bs",
+          url: `${siteUrl}/packages/date-picker-bs`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "extensions_core",
+          url: `${siteUrl}/packages/extensions-core`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "kundali_chart",
+          url: `${siteUrl}/packages/kundali-chart`,
+        },
+      ],
+    },
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
 
       {/* ─── Hero ─── */}

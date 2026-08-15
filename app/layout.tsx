@@ -1,12 +1,15 @@
 import type { Metadata } from "next"
 import { ThemeProvider } from "./theme-provider"
+import {
+  siteUrl,
+  siteName,
+  owner,
+  defaultKeywords,
+  siteDescription,
+} from "@/lib/seo"
 import "./globals.css"
 
-const siteUrl = "https://packages.christhapa.com.np"
-const siteName = "Packages by Chris Thapa"
 const siteTitle = "Packages by Chris Thapa — Open Source Libraries for JS/TS & Flutter"
-const siteDescription =
-  "A curated collection of open source packages by Chris Thapa — Bikram Sambat (Nepali) date utilities, a React date picker, Dart & Flutter extensions, and Vedic astrology charts."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -15,51 +18,29 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
-  keywords: [
-    "Packages by Chris Thapa",
-    "Chris Thapa",
-    "Bikram Sambat",
-    "Nepali date picker",
-    "Nepali calendar",
-    "Nepali date converter",
-    "BS to AD",
-    "Nepali number",
-    "Nepali utilities",
-    "React date picker",
-    "TypeScript",
-    "Flutter",
-    "Dart",
-    "Flutter extensions",
-    "Vedic astrology",
-    "Kundali chart",
-    "open source",
-    "npm",
-    "pub.dev",
-  ],
-  authors: [{ name: "Chris Thapa" }],
-  creator: "Chris Thapa",
+  applicationName: siteName,
+  keywords: defaultKeywords,
+  authors: [{ name: owner.name, url: owner.url }],
+  creator: owner.name,
   publisher: siteName,
+  category: "technology",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
     siteName,
+    url: siteUrl,
     title: siteTitle,
     description: siteDescription,
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: siteTitle,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og.png"],
   },
   robots: {
     index: true,
@@ -72,15 +53,31 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
   alternates: {
     canonical: siteUrl,
   },
+}
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: siteName,
+  url: siteUrl,
+  description: siteDescription,
+  publisher: {
+    "@id": `${owner.url}/#person`,
+  },
+  inLanguage: "en-US",
+}
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${owner.url}/#person`,
+  name: owner.name,
+  url: owner.url,
+  sameAs: [owner.github],
 }
 
 export default function RootLayout({
@@ -88,26 +85,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteName,
-    url: siteUrl,
-    description: siteDescription,
-    author: {
-      "@type": "Person",
-      name: "Chris Thapa",
-      url: "https://christhapa.com.np",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
-  }
+  const jsonLd = [websiteJsonLd, personJsonLd]
 
   return (
     <html lang="en" suppressHydrationWarning>
