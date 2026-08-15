@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Comprehensive guides and API references for every Christhapa package — date-picker-bs, @nepali-utils/core, extensions_core, and kundali_chart.",
   openGraph: {
-    title: "Documentation | Christhapa Packages",
+    title: "Documentation | Packages by Chris Thapa",
     description:
       "Comprehensive guides and API references for every Christhapa package.",
   },

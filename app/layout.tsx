@@ -3,8 +3,8 @@ import { ThemeProvider } from "./theme-provider"
 import "./globals.css"
 
 const siteUrl = "https://packages.christhapa.com.np"
-const siteName = "Christhapa Packages"
-const siteTitle = "Christhapa Packages — Open Source Libraries for JS/TS & Flutter"
+const siteName = "Packages by Chris Thapa"
+const siteTitle = "Packages by Chris Thapa — Open Source Libraries for JS/TS & Flutter"
 const siteDescription =
   "A curated collection of open source packages by Chris Thapa — Bikram Sambat (Nepali) date utilities, a React date picker, Dart & Flutter extensions, and Vedic astrology charts."
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   keywords: [
-    "Christhapa Packages",
+    "Packages by Chris Thapa",
     "Chris Thapa",
     "Bikram Sambat",
     "Nepali date picker",

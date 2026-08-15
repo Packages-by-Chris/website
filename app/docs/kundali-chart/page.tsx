@@ -1,9 +1,11 @@
 "use client"
 
+import Image from "next/image"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 
 const sections = [
+  { id: "preview", label: "Preview" },
   { id: "getting-started", label: "Getting started" },
   { id: "installation", label: "Installation" },
   { id: "quick-start", label: "Quick start" },
@@ -89,6 +91,25 @@ export default function KundaliChartDocs() {
                 </a>
               ))}
             </div>
+
+            {/* ─── Preview ─── */}
+            <DocSection id="preview" title="Preview">
+              <figure className="rounded-xl border border-border bg-card p-6">
+                <div className="flex justify-center">
+                  <Image
+                    src="/kundali-chart.png"
+                    alt="Kundali chart preview"
+                    width={400}
+                    height={400}
+                    className="h-auto w-auto max-w-full rounded-lg"
+                    priority
+                  />
+                </div>
+                <figcaption className="mt-4 text-center text-sm text-muted-foreground">
+                  Traditional 12-house Vedic birth chart rendered with default styling.
+                </figcaption>
+              </figure>
+            </DocSection>
 
             {/* ─── Getting Started ─── */}
             <DocSection id="getting-started" title="Getting started">
@@ -422,7 +443,7 @@ placePlanetsInHouse(house, planets, style) → List<PlanetPlacement>`} />
                     Package details
                   </a>
                   <a
-                    href="https://github.com/LeanQChris/kundali_chart"
+                    href="https://github.com/workwithchris/kundali_chart"
                     target="_blank"
                     rel="noreferrer"
                     className="btn-outline px-4 py-2 text-xs"

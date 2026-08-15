@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "A customizable Bikram Sambat (Nepali) date picker and calendar for React. Built with Radix UI Popover and Tailwind CSS. Supports Nepali language, date constraints, custom formatting, and shadcn/ui theming.",
   openGraph: {
-    title: "date-picker-bs | Christhapa Packages",
+    title: "date-picker-bs | Packages by Chris Thapa",
     description:
       "A customizable Bikram Sambat date picker and calendar for React.",
   },

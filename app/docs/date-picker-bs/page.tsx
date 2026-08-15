@@ -978,7 +978,7 @@ const weeks = generateCalendarGrid(2081, 5)
                     Package details
                   </a>
                   <a
-                    href="https://github.com/LeanQChris"
+                    href="https://github.com/workwithchris"
                     target="_blank"
                     rel="noreferrer"
                     className="btn-outline px-4 py-2 text-xs"

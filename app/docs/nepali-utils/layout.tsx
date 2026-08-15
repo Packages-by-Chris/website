@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Complete documentation for @nepali-utils/core — a zero-dependency TypeScript library for Bikram Sambat date conversion, formatting, calendar data, location, validation, and currency utilities.",
   openGraph: {
-    title: "@nepali-utils/core Documentation | Christhapa Packages",
+    title: "@nepali-utils/core Documentation | Packages by Chris Thapa",
     description:
       "Complete documentation for the core Bikram Sambat utilities library.",
   },

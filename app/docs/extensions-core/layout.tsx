@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Complete documentation for extensions_core — a dependency-light collection of Dart & Flutter extensions for strings, numbers, dates, collections, colors, widgets, navigation, and more.",
   openGraph: {
-    title: "extensions_core Documentation | Christhapa Packages",
+    title: "extensions_core Documentation | Packages by Chris Thapa",
     description:
       "Complete documentation for the Dart & Flutter extensions collection.",
   },

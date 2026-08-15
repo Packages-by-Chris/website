@@ -43,37 +43,32 @@ export default function DocsPage() {
     <div className="min-h-screen bg-background">
       <Nav />
 
-      <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8">
-        <div className="mb-12 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Documentation</h1>
-          <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
+      <div className="mx-auto max-w-3xl px-6 py-14 sm:px-8">
+        <div className="mb-12">
+          <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">Documentation</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Guides &amp; references</h1>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
             Comprehensive guides and API references for every Christhapa package.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="divide-y divide-border border-y border-border">
           {docPackages.map((pkg) => (
-            <a
-              key={pkg.name}
-              href={pkg.href}
-              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <h2 className="text-base font-semibold text-foreground">{pkg.name}</h2>
-                <span className="shrink-0 rounded-full border border-border bg-muted px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{pkg.stack}</span>
+            <a key={pkg.name} href={pkg.href} className="group block py-7">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 className="text-lg font-semibold tracking-tight text-foreground group-hover:underline">{pkg.name}</h2>
+                <span className="inline-flex rounded-full border border-border bg-muted px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{pkg.stack}</span>
               </div>
               <p className="mt-1 text-sm font-medium text-muted-foreground">{pkg.tagline}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {pkg.description}
-              </p>
-              <div className="mt-4 flex flex-1 flex-wrap content-start gap-1.5">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{pkg.description}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 {pkg.sections.map((s) => (
                   <span key={s} className="rounded-md bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
                     {s}
                   </span>
                 ))}
               </div>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
                 Read the docs
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </span>
@@ -81,9 +76,12 @@ export default function DocsPage() {
           ))}
         </div>
 
-        <div className="mt-14 rounded-xl border border-border bg-card p-6">
-          <h2 className="mb-2 text-base font-semibold text-foreground">Quick install</h2>
-          <p className="mb-4 text-sm text-muted-foreground">
+        <div className="mt-14">
+          <div className="mb-4">
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">Quick install</p>
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">Install everything</h2>
+          </div>
+          <p className="doc-body mb-4">
             Install everything you need for Bikram Sambat development:
           </p>
           <CodeBlock lang="bash" code="# Core utilities (framework-agnostic)
@@ -103,7 +101,10 @@ flutter pub add kundali_chart" />
       <footer className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-10 sm:px-8">
           <p className="text-center text-xs text-muted-foreground">
-            MIT License · Built for the Nepali community
+            MIT License · Built for the Nepali community · by{" "}
+            <a href="https://christhapa.com.np" target="_blank" rel="noreferrer" className="font-medium text-foreground transition-colors hover:underline">
+              Chris Thapa
+            </a>
           </p>
         </div>
       </footer>

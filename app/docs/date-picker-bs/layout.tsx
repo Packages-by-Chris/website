@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Complete documentation for date-picker-bs — a React date picker and calendar for the Bikram Sambat (Nepali) calendar system. Learn about props, formatting, styling, and more.",
   openGraph: {
-    title: "date-picker-bs Documentation | Christhapa Packages",
+    title: "date-picker-bs Documentation | Packages by Chris Thapa",
     description:
       "Complete documentation for the Bikram Sambat date picker for React.",
   },

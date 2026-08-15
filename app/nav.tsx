@@ -26,7 +26,7 @@ export function Nav() {
               <line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
           </span>
-          Christhapa Packages
+          Packages by Chris Thapa
         </a>
         <nav className="hidden items-center gap-1 sm:flex">
           {links.map((l) => {
@@ -51,7 +51,7 @@ export function Nav() {
           <div className="ml-2 flex items-center gap-1 border-l border-border pl-3">
             <ThemeToggle />
             <a
-              href="https://github.com/LeanQChris"
+              href="https://github.com/workwithchris"
               target="_blank"
               rel="noreferrer"
               className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"

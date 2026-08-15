@@ -59,12 +59,12 @@ export default function Home() {
             Open source · MIT · v0.1.0
           </span>
           <h1 className="mt-7 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Libraries for the
-            <br className="hidden sm:block" /> Nepali ecosystem
+            Open source packages
+            <br className="hidden sm:block" /> by Chris Thapa
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg text-pretty">
             Bikram Sambat date tools, a React date picker, Dart &amp; Flutter extensions,
-            and Vedic astrology charts — by Chris Thapa.
+            and Vedic astrology charts.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <a href="/docs" className="btn-primary px-5 py-2.5">
@@ -72,7 +72,7 @@ export default function Home() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a
-              href="https://github.com/LeanQChris"
+              href="https://github.com/workwithchris"
               target="_blank"
               rel="noreferrer"
               className="btn-outline px-5 py-2.5"
@@ -88,10 +88,10 @@ export default function Home() {
       <section className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
         <div className="mb-4">
           <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">Introduction</p>
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground">What is Christhapa Packages?</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">What is this collection?</h2>
         </div>
         <p className="doc-lead">
-          Christhapa Packages is a collection of open source libraries maintained by Chris Thapa,
+          Packages by Chris Thapa is a collection of open source libraries maintained by Chris Thapa,
           spanning two stacks. The JavaScript/TypeScript side focuses on the Bikram Sambat (Nepali)
           calendar — from a zero-dependency core library to a fully-featured React date picker.
           The Dart/Flutter side ships daily-driver extensions and a Vedic astrology chart widget.
@@ -159,13 +159,20 @@ export default function Home() {
                   <line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
               </span>
-              <span className="text-sm font-semibold text-foreground">Christhapa Packages</span>
+              <span className="text-sm font-semibold text-foreground">Packages by Chris Thapa</span>
             </div>
             <p className="text-xs text-muted-foreground">
-              Open source libraries by Chris Thapa — TypeScript · React · Dart · Flutter
+              Open source libraries by{" "}
+              <a href="https://christhapa.com.np" target="_blank" rel="noreferrer" className="font-medium text-foreground transition-colors hover:underline">
+                Chris Thapa
+              </a>{" "}
+              — TypeScript · React · Dart · Flutter
             </p>
             <p className="text-[11px] text-muted-foreground/60">
-              MIT License · packages.christhapa.com.np
+              MIT License ·{" "}
+              <a href="https://packages.christhapa.com.np" className="transition-colors hover:text-muted-foreground">
+                packages.christhapa.com.np
+              </a>
             </p>
           </div>
         </div>

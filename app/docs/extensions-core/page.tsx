@@ -548,7 +548,7 @@ TextFormField(validator: maxLengthValidator(12));`} />
                     Package details
                   </a>
                   <a
-                    href="https://github.com/LeanQChris/extensions.git"
+                    href="https://github.com/workwithchris/extensions.git"
                     target="_blank"
                     rel="noreferrer"
                     className="btn-outline px-4 py-2 text-xs"
