@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../nav"
 import { CodeBlock } from "../code-block"
 
@@ -48,6 +49,7 @@ const packages = [
 
 export default function Packages() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -98,5 +100,6 @@ export default function Packages() {
         </div>
       </footer>
     </div>
+    </ViewTransition>
   )
 }

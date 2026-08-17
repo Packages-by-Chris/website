@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 
@@ -64,6 +65,7 @@ function ExtTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
 
 export default function ExtensionsCoreDocs() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -563,5 +565,6 @@ TextFormField(validator: maxLengthValidator(12));`} />
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }

@@ -139,3 +139,49 @@
     border-radius: 3px;
   }
 }
+
+/* ─── View transitions (Instant Navigations) ─── */
+/* Keep the page clickable while the crossfade runs */
+::view-transition {
+  pointer-events: none;
+}
+
+/* Old page fades out fast */
+::view-transition-old(.page-exit) {
+  animation: 150ms ease-out both page-fade reverse;
+}
+
+/* New page fades in after the old one clears */
+::view-transition-new(.page-enter) {
+  animation:
+    200ms ease-out 150ms both page-fade,
+    300ms ease-out both page-rise;
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes page-rise {
+  from {
+    translate: 0 6px;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+/* Respect reduced-motion: swap instantly, no animation */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

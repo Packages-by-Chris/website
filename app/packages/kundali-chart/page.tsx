@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 import Image from "next/image"
@@ -111,6 +112,7 @@ const sidebarSections = features.map((f) => ({
 
 export default function KundaliChartPage() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -248,5 +250,6 @@ export default function KundaliChartPage() {
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }

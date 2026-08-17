@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../nav"
 import { CodeBlock } from "../code-block"
 
@@ -40,6 +41,7 @@ const docPackages = [
 
 export default function DocsPage() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -109,5 +111,6 @@ flutter pub add kundali_chart" />
         </div>
       </footer>
     </div>
+    </ViewTransition>
   )
 }

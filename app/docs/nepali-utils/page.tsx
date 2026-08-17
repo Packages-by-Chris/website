@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 
@@ -37,6 +38,7 @@ function DocSubSection({ title, children }: { title: string; children: React.Rea
 
 export default function NepaliUtilsDocs() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -672,5 +674,6 @@ WEEKDAYS[6]
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }

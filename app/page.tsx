@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "./nav"
 import { CodeBlock } from "./code-block"
 import { siteUrl, siteName } from "@/lib/seo"
@@ -92,6 +93,7 @@ export default function Home() {
   }
 
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
@@ -223,5 +225,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </ViewTransition>
   )
 }

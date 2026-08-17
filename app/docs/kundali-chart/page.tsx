@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import Image from "next/image"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
@@ -38,6 +39,7 @@ function DocSubSection({ title, children }: { title: string; children: React.Rea
 
 export default function KundaliChartDocs() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -458,5 +460,6 @@ placePlanetsInHouse(house, planets, style) → List<PlanetPlacement>`} />
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { ViewTransition } from "react"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 
@@ -75,6 +76,7 @@ export default function ExtensionsCorePage() {
   const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
 
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -188,5 +190,6 @@ export default function ExtensionsCorePage() {
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }

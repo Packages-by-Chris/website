@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, ViewTransition } from "react"
 import { DatePickerBS, type DateBS, formatBsDate, getTodayBs, isAfterBsDate } from "date-picker-bs"
 import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
@@ -143,6 +143,7 @@ function DateRangeExample() {
 
 export default function DatePickerDocs() {
   return (
+    <ViewTransition default="none" enter="page-enter" exit="page-exit">
     <div className="min-h-screen bg-background">
       <Nav />
 
@@ -988,5 +989,6 @@ const weeks = generateCalendarGrid(2081, 5)
         </div>
       </div>
     </div>
+    </ViewTransition>
   )
 }
