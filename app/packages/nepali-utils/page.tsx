@@ -12,7 +12,7 @@ const features = [
 const today = getTodayBs()
 // → { year: 2081, month: 5, day: 15 }
 
-const adDate = bsToAd(today)
+const adDate = bsToAd(today.year, today.month, today.day)
 // → Date (JavaScript Date object)
 
 const backToBs = adToBs(adDate)
@@ -47,10 +47,10 @@ parseNepaliNumber("२०८१") // → 2081`,
     code: `import { generateCalendarGrid, getDaysInBsMonth, MONTHS } from "@nepali-utils/core"
 
 const grid = generateCalendarGrid(2081, 5)
-// Returns array of CalendarDay objects for rendering
+// Returns CalendarDay[][] — 6 weeks × 7 days, ready for rendering
 
 getDaysInBsMonth(2081, 5) // → number of days in Bhadra 2081
-MONTHS.ne                 // → ["बैशाख", "जेष्ठ", ...]`,
+MONTHS[0]                 // → { value: 1, nameEn: "Baisakh", nameNe: "बैशाख" }`,
   },
   {
     title: "Location Data",
@@ -62,8 +62,10 @@ MONTHS.ne                 // → ["बैशाख", "जेष्ठ", ...]`,
 } from "@nepali-utils/core"
 
 provinces                  // → all 7 provinces
-getProvinceById(1)          // → ProvinceInfo
-getDistrictsByProvince(1)   // → districts in province 1`,
+getProvinceById("31648741-3bc6-4b03-ad68-7950a5ffec17")
+// → ProvinceInfo
+getDistrictsByProvince("1a2d297a-b4d4-4062-9801-62813c324753")
+// → DistrictInfo[] (districts in the province)`,
   },
   {
     title: "Validation",
@@ -71,10 +73,10 @@ getDistrictsByProvince(1)   // → districts in province 1`,
     code: `import { isValidNepaliMobile, getPhoneType } from "@nepali-utils/core"
 
 isValidNepaliMobile("9841234567") // → true
-getPhoneType("9841234567")         // → "NTC"
+getPhoneType("9841234567")         // → "mobile"
 
 formatNepaliPhone("9841234567")
-// → "984-1234567"`,
+// → "984-123-4567"`,
   },
   {
     title: "Currency",

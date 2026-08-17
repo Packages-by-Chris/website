@@ -72,7 +72,7 @@ function App() {
   onChange={setDate}
   minDate={today}
   maxDate={{ year: 2081, month: 6, day: 15 }}
-  disabledDays={(d) => {
+  disabled={(d) => {
     // Disable weekends
     const dayIndex = (
       d.year * 365 + d.month * 30 + d.day
@@ -89,10 +89,10 @@ function App() {
   selected={date}
   onSelect={setDate}
   classNames={{
-    month: "text-lg font-bold",
+    captionLabel: "text-lg font-bold",
     day: "rounded-full hover:bg-primary/10",
-    today: "ring-2 ring-primary",
-    selected: "bg-primary text-primary-foreground",
+    dayToday: "ring-2 ring-primary",
+    daySelected: "bg-primary text-primary-foreground",
   }}
 />`,
   },

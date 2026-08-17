@@ -133,7 +133,7 @@ export default function NepaliUtilsDocs() {
               <DocSubSection title="BS → AD">
                 <CodeBlock code={`import { bsToAd } from "@nepali-utils/core"
 
-const date = bsToAd({ year: 2081, month: 5, day: 15 })
+const date = bsToAd(2081, 5, 15)
 // → Date (JavaScript Date object)`} />
               </DocSubSection>
 
@@ -154,7 +154,7 @@ const today = getTodayBs()
               <DocSubSection title="Day of week">
                 <CodeBlock code={`import { getBsDayOfWeek } from "@nepali-utils/core"
 
-const dayOfWeek = getBsDayOfWeek({ year: 2081, month: 5, day: 15 })
+const dayOfWeek = getBsDayOfWeek(2081, 5, 15)
 // → 0 (Sunday) through 6 (Saturday)`} />
               </DocSubSection>
             </DocSection>
@@ -197,8 +197,8 @@ parseNepaliNumber("२०८१") // → 2081`} />
 getPrevMonth(2081, 5)  // → { year: 2081, month: 4 }
 getNextMonth(2081, 5)  // → { year: 2081, month: 6 }
 
-MONTHS.en  // → ["Baisakh", "Jestha", "Ashad", ...]
-MONTHS.ne  // → ["बैशाख", "जेष्ठ", "असार", ...]`} />
+MONTHS[0]  // → { value: 1, nameEn: "Baisakh", nameNe: "बैशाख" }
+MONTHS[4]  // → { value: 5, nameEn: "Bhadra", nameNe: "भाद्र" }`} />
               </DocSubSection>
             </DocSection>
 
@@ -211,9 +211,9 @@ MONTHS.ne  // → ["बैशाख", "जेष्ठ", "असार", ...]`} 
               <DocSubSection title="Calendar grid">
                 <CodeBlock code={`import { generateCalendarGrid, type CalendarDay } from "@nepali-utils/core"
 
-const grid: CalendarDay[] = generateCalendarGrid(2081, 5)
-// Returns an array of CalendarDay objects with day, month, year,
-// isCurrentMonth, isToday, dayOfWeek, and date properties.`} />
+const grid: CalendarDay[][] = generateCalendarGrid(2081, 5)
+// Returns a 6×7 grid (weeks × days) of CalendarDay objects:
+// day, date, isToday, isSelected, isDisabled, isOutside.`} />
               </DocSubSection>
 
               <DocSubSection title="Month/year info">
@@ -285,26 +285,26 @@ getDistrictsByProvince("1a2d297a-b4d4-4062-9801-62813c324753")
               <DocSubSection title="Municipalities">
                 <CodeBlock code={`import { municipalities, getMunicipalityById, getMunicipalitiesByDistrict } from "@nepali-utils/core"
 
-getMunicipalityById(1)
-// → { id: 1, districtId: 1, nameEn: "...", nameNe: "...", type: "...", ... }
+getMunicipalityById("097e65c5-27b3-4bd8-b4ae-3bc46704e633")
+// → { id: "...", districtId: "...", nameEn: "...", nameNe: "...", ... }
 
-getMunicipalitiesByDistrict(1)
+getMunicipalitiesByDistrict("6accfa6f-c4ab-4b95-b0bf-aaf740375f62")
 // → MunicipalityInfo[]
 
-getMunicipalitiesByProvince(1)
-// → MunicipalityInfo[] (all municipalities in Koshi)`} />
+getMunicipalitiesByProvince("1a2d297a-b4d4-4062-9801-62813c324753")
+// → MunicipalityInfo[] (all municipalities in the province)`} />
               </DocSubSection>
 
               <DocSubSection title="Wards">
                 <CodeBlock code={`import { wards, getWardsByMunicipality, getWardsByDistrict, getWardsByProvince } from "@nepali-utils/core"
 
-getWardsByMunicipality(1)
+getWardsByMunicipality("097e65c5-27b3-4bd8-b4ae-3bc46704e633")
 // → WardInfo[]
 
-getWardsByDistrict(1)
+getWardsByDistrict("6accfa6f-c4ab-4b95-b0bf-aaf740375f62")
 // → WardInfo[]
 
-getWardsByProvince(1)
+getWardsByProvince("1a2d297a-b4d4-4062-9801-62813c324753")
 // → WardInfo[]`} />
               </DocSubSection>
             </DocSection>
@@ -321,12 +321,12 @@ getWardsByProvince(1)
 isValidNepaliMobile("9841234567") // → true
 isValidNepaliMobile("12345")     // → false
 
-getPhoneType("9841234567") // → "NTC" (Nepal Telecom)
-getPhoneType("9861234567") // → "NTC"
-getPhoneType("9851234567") // → "Ncell"
+getPhoneType("9841234567") // → "mobile"
+getPhoneType("01-1234567") // → "landline"
+getPhoneType("99999999")   // → "unknown"
 
 formatNepaliPhone("9841234567")
-// → "984-1234567"`} />
+// → "984-123-4567"`} />
               </DocSubSection>
             </DocSection>
 

@@ -195,7 +195,7 @@ void main() {
                 <CodeBlock lang="dart" code={`'hello world'.truncate(5);   // → "hello..."
 'hello'.reverse();            // → "olleh"
 'John Smith'.initials();      // → "JS"
-'9841234567'.masked();        // → "*****4567"
+'9841234567'.masked();        // → "******4567"
 'hello123'.onlyDigits;        // → "123"
 'hello world'.slugify();      // → "hello-world"
 'abc'.replaceLast('c', 'z');  // → "abz"`} />

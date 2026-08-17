@@ -6,8 +6,6 @@ import { Nav } from "../../nav"
 import { CodeBlock } from "../../code-block"
 import { ExamplePreview } from "../../example-preview"
 
-const VERSION = "0.1.0"
-
 const sections = [
   { id: "getting-started", label: "Getting started" },
   { id: "installation", label: "Installation" },
@@ -461,6 +459,8 @@ function DateRangePicker() {
                 { name: "disabled", type: "(date: DateBS) => boolean", default: "—", desc: "Custom function to disable specific days." },
                 { name: "formatOptions", type: "{ pattern: string }", default: "—", desc: "Override the display format of the trigger." },
                 { name: "placeholder", type: "string", default: '"Pick a date"', desc: "Placeholder text when no date is selected." },
+                { name: "fromYear", type: "number", default: "2000", desc: "Earliest year shown in the year grid view." },
+                { name: "toYear", type: "number", default: "2100", desc: "Latest year shown in the year grid view." },
                 { name: "open", type: "boolean", default: "—", desc: "Controlled open state of the popover." },
                 { name: "onOpenChange", type: "(open: boolean) => void", default: "—", desc: "Called when the popover open state changes." },
                 { name: "className", type: "string", default: "—", desc: "Additional classes for the trigger button." },
@@ -485,6 +485,7 @@ function DateRangePicker() {
                 { name: "fromYear", type: "number", default: "2000", desc: "Earliest year shown in the year grid view." },
                 { name: "toYear", type: "number", default: "2100", desc: "Latest year shown in the year grid view." },
                 { name: "today", type: "DateBS | undefined", default: "getTodayBs()", desc: "Override the date used for \"today\" highlighting." },
+                { name: "className", type: "string", default: "—", desc: "Additional classes for the calendar wrapper." },
                 { name: "classNames", type: "Partial<CalendarBSClassNames>", default: "—", desc: "Override internal component classes for deep customization (20+ slots)." },
               ]} />
             </DocSection>
@@ -507,9 +508,7 @@ function DateRangePicker() {
                   <tbody>
                     {[
                       { token: "YYYY", meaning: "4-digit year", en: "2081", ne: "२०८१" },
-                      { token: "YY", meaning: "2-digit year", en: "81", ne: "८१" },
                       { token: "MMMM", meaning: "Full month name", en: "Bhadra", ne: "भदौ" },
-                      { token: "MMM", meaning: "Abbreviated month", en: "Bhad", ne: "भदौ" },
                       { token: "MM", meaning: "2-digit month", en: "05", ne: "०५" },
                       { token: "DD", meaning: "2-digit day", en: "15", ne: "१५" },
                     ].map((r, i) => (
@@ -538,11 +537,7 @@ formatOptions={{ pattern: "DD MMMM YYYY" }}
 
 // Month day, year
 formatOptions={{ pattern: "MMMM DD, YYYY" }}
-// → "Bhadra 15, 2081"
-
-// Abbreviated
-formatOptions={{ pattern: "YYYY MMM DD" }}
-// → "2081 Bhad 15"`} />
+// → "Bhadra 15, 2081"`} />
               </DocSubSection>
             </DocSection>
 
@@ -599,14 +594,14 @@ const nextWeek = {
 
               <DocSubSection title="Disabled days callback">
                 <p className="text-sm leading-relaxed text-muted-foreground mb-3">
-                  Use <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">disabledDays</code> for fine-grained control over which dates are selectable.
+                  Use <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">disabled</code> for fine-grained control over which dates are selectable.
                   Return <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs">true</code> to disable a day:
                 </p>
                 <CodeBlock code={`// Disable weekends
 <DatePickerBS
   value={date}
   onChange={setDate}
-  disabledDays={(d) => {
+  disabled={(d) => {
     const dayIndex = (
       d.year * 365 + d.month * 30 + d.day
     ) % 7
@@ -663,10 +658,10 @@ const nextWeek = {
   selected={date}
   onSelect={setDate}
   classNames={{
-    month: "text-lg font-bold",
+    captionLabel: "text-lg font-bold",
     day: "rounded-full hover:bg-primary/10",
-    today: "ring-2 ring-primary",
-    selected: "bg-primary text-primary-foreground",
+    dayToday: "ring-2 ring-primary",
+    daySelected: "bg-primary text-primary-foreground",
   }}
 />`} />
               </DocSubSection>
